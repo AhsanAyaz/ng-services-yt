@@ -1,0 +1,30 @@
+.fruits {
+  width: 300px;
+  @apply flex flex-col gap-2;
+  &__item {
+    display: flex;
+    align-items: center;
+    @apply flex items-center hover:bg-primary hover:text-white border border-r-primary border-b-primary border-t-primary rounded-md px-4 py-2;
+    &__title {
+      flex: 1;
+      margin-right: 16px;
+    }
+    .material-symbols-outlined {
+      color: red;
+      cursor: pointer;
+      &:hover {
+        color: #333;
+      }
+    }
+    &--limited {
+      background-color: #333;
+      color: white;
+    }
+  }
+}
+
+.add-section {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,21 @@
+<div
+  class="border-l-4 border-green-400 flex justify-between items-center mb-10 rounded-md px-2"
+>
+  <h2 class="text-3xl">Admin</h2>
+  <button class="btn btn-primary" (click)="performFruitAnalysis()">
+    Analyze Fruits
+  </button>
+</div>
+<app-bucket></app-bucket>
+
+<!-- Daisy UI Modal -->
+<input type="checkbox" id="fruitAnalysisModal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <div class="modal-action absolute top-0 right-4">
+      <label for="fruitAnalysisModal" class="btn">Close</label>
+    </div>
+    <h3 class="font-bold text-lg">Fruit Analysis</h3>
+    <figure id="fruit-chart"></figure>
+  </div>
+</div>
