@@ -3,8 +3,8 @@ import { BucketComponent } from '../components/bucket/bucket.component';
 import { USER_TYPE } from '../constants/user-type-token';
 import { UserType } from '../constants/user-type';
 import { LogsComponent } from '../components/logs/logs.component';
-import { LogsService } from '../services/logs.service';
 import { BucketService } from '../components/bucket/bucket.service';
+import { FruitAnalysisService } from '../services/fruit-analysis.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +13,6 @@ import { BucketService } from '../components/bucket/bucket.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
   providers: [
-    BucketService,
     {
       provide: USER_TYPE,
       useValue: UserType.Admin,
@@ -23,11 +22,10 @@ import { BucketService } from '../components/bucket/bucket.service';
 export class AdminComponent {
   injector = inject(Injector);
   bucketService = inject(BucketService);
+  analysisService = inject(FruitAnalysisService);
   async performFruitAnalysis() {
-    const { FruitAnalysisService } = await import('./fruit-analysis.service');
-    const analysisService = this.injector.get(FruitAnalysisService);
     const bucket = this.bucketService.bucket();
-    const results = analysisService.analyzeFruits(bucket);
+    const results = this.analysisService.analyzeFruits(bucket);
     console.log('Fruit analysis results:', results);
     // Open the modal
     const modalCheckbox = document.getElementById(
