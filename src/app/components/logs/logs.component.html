@@ -1,0 +1,11 @@
+@if (logs.length) {
+<section
+  class="rounded-md bg-base-200 p-4 max-w-md max-h-[400px] overflow-y-auto"
+>
+  <ul class="flex flex-col gap-2 divide-y">
+    @for(log of logs; track $index;) {
+    <li [class.pt-2]="$index > 0" class="text-xs">{{ log }}</li>
+    }
+  </ul>
+</section>
+}

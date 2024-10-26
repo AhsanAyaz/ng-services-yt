@@ -1,5 +1,7 @@
+:host {
+  @apply block max-w-sm mx-auto;
+}
 .fruits {
-  width: 300px;
   @apply flex flex-col gap-2;
   &__item {
     display: flex;
@@ -24,7 +26,6 @@
 }
 
 .add-section {
-  width: 300px;
   display: flex;
   align-items: center;
 }

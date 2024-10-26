@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BucketService } from '../bucket/bucket.service';
+import { BucketService } from '../components/bucket/bucket.service';
 import { IFruit } from '../interfaces/fruit.interface';
 import { UserType } from '../constants/user-type';
 
@@ -11,7 +11,7 @@ export class EmployeeBucketService extends BucketService {
     super();
   }
 
-  override addItem(fruit: IFruit): void {
+  override addItem(fruit: IFruit, userType: UserType): void {
     if (
       this.bucket().filter((item) => item.addedBy === UserType.Employee)
         .length === 5
@@ -20,6 +20,6 @@ export class EmployeeBucketService extends BucketService {
       return;
     }
 
-    super.addItem(fruit);
+    super.addItem(fruit, userType);
   }
 }
