@@ -5,6 +5,7 @@ import { EmployeeBucketService } from './employee-bucket.service';
 import { USER_TYPE } from '../constants/user-type-token';
 import { UserType } from '../constants/user-type';
 import { LogsComponent } from '../components/logs/logs.component';
+import { LogsService } from '../services/logs.service';
 
 @Component({
   selector: 'app-employee',
@@ -21,6 +22,7 @@ import { LogsComponent } from '../components/logs/logs.component';
       provide: USER_TYPE,
       useValue: UserType.Employee,
     },
+    LogsService,
   ],
 })
 export class EmployeeComponent {}

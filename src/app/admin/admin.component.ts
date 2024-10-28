@@ -4,7 +4,7 @@ import { USER_TYPE } from '../constants/user-type-token';
 import { UserType } from '../constants/user-type';
 import { LogsComponent } from '../components/logs/logs.component';
 import { BucketService } from '../components/bucket/bucket.service';
-import { FruitAnalysisService } from '../services/fruit-analysis.service';
+import { LogsService } from '../services/logs.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,15 +17,22 @@ import { FruitAnalysisService } from '../services/fruit-analysis.service';
       provide: USER_TYPE,
       useValue: UserType.Admin,
     },
+    LogsService,
+    BucketService,
   ],
 })
 export class AdminComponent {
   injector = inject(Injector);
   bucketService = inject(BucketService);
-  analysisService = inject(FruitAnalysisService);
   async performFruitAnalysis() {
+    const analyisServiceModule = await import(
+      '../services/fruit-analysis.service'
+    );
+    const analysisService = this.injector.get(
+      analyisServiceModule.FruitAnalysisService
+    );
     const bucket = this.bucketService.bucket();
-    const results = this.analysisService.analyzeFruits(bucket);
+    const results = analysisService.analyzeFruits(bucket);
     console.log('Fruit analysis results:', results);
     // Open the modal
     const modalCheckbox = document.getElementById(

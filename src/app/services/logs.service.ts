@@ -2,9 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { USER_TYPE } from '../constants/user-type-token';
 import { UserType } from '../constants/user-type';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LogsService {
   private logs: string[] = [];
 

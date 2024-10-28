@@ -4,9 +4,7 @@ import { IBucketService } from '../../interfaces/bucket-service';
 import { LogsService } from '../../services/logs.service';
 import { UserType } from '../../constants/user-type';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class BucketService implements IBucketService {
   bucket = signal<IFruit[]>([]);
   logs = inject(LogsService);
